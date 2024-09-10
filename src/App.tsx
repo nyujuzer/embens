@@ -24,7 +24,7 @@ function App() {
          },
        })
        const products = await response.json();
-       setData(products.data[0])
+       setData(products.data)
     };
     getProducts();
   });
