@@ -2,6 +2,12 @@
   --primary:#0c0c00;
   --active_link:#f0f0f0;
 }
+.flex-f{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .flex-r{
   display: flex;
   flex-direction: row;

@@ -1,71 +1,101 @@
-import React from "react";
-import placeholder from "./Person2.png"
+import React, { useEffect, useState } from "react";
+import placeholder from "./Person2.png";
 import "./App.css";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Link,
-  Typography,
-  ListItemText,
-  List,
-} from "@mui/material";
+import { Box, Grid2, Typography, ListItemText, List } from "@mui/material";
+import NavBar from "./components/navbar/navbar";
+import ProductDisplay from "./components/displayCase/display";
+import { Product } from "./types";
+import products from "./products.json";
 
 function App() {
+  console.log(products);
+  const API_KEY = process.env.REACT_APP_PRINTIFY_API_KEY;
+  const SHOP_ID = process.env.REACT_APP_SHOP_ID;
+  const [data, setData] = useState<Array<Product>>(
+    products.data as Array<Product>
+  );
+
+  useEffect(() => {
+    const getProducts = async () => {
+      // const response = await fetch(`https://api.printify.com/v1/shops/${SHOP_ID}/products.json`, {
+      //   method: 'GET',
+      //   headers: {
+      //     'Authorization': `Bearer ${API_KEY}`,
+      //   },
+      // })
+      // const products = await response.json();
+      // setData(products.data[0])
+    };
+    getProducts();
+  });
   return (
     <section id="main">
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar variant="regular" className="flex-r">
-            <Box maxWidth={"20%"}>
-              <Typography variant="h6" color="inherit" component="div">
-                Embezzlement Ensamble
-              </Typography>
-            </Box>
-            <Link variant="h6" color="inherit" component="div">
-              Products
-            </Link>
-            <Link variant="h6" color="inherit" component="div">
-              About Us
-            </Link>
-          </Toolbar>
-        </AppBar>
+        <NavBar></NavBar>
       </Box>
       <Box>
-        <Typography variant="h1">Welcome to Embezzle Ensemble</Typography>
-        <Box className="flex-r ">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect x="10" y="10" width="80" height="80" fill="#00ff00" />
-  <text x="50" y="50" font-family="Arial" font-size="40" fill="black" text-anchor="middle" dominant-baseline="middle">$</text>
-  <path d="M10 10 L90 90 M90 10 L10 90" stroke="red" stroke-width="5" />
-</svg>
-          <Box>
-            <Typography variant="h5">
+        <Typography fontFamily={"Permanent Marker"} align="center" variant="h1">
+          Welcome to Embezzle Ensemble
+        </Typography>
+        <Box className="flex-r">
+          <Box
+            component="img"
+            src={placeholder}
+            sx={{
+              maxWidth: { xs: "0%", md: "50%" },
+              maxHeight: { xs: "0%", md: "50%" },
+            }}
+          ></Box>
+          <Box className="flex-f">
+            <Typography fontWeight={"bold"} fontFamily={"Lato"} variant="h4">
               We're not just selling clothes. We're making a statement.
             </Typography>
-            <Typography variant="h5">
+            <Typography fontWeight={"bold"} fontFamily={"Lato"} variant="h4">
               Our mission? Shine a spotlight on white-collar crime – through
               fashion.
             </Typography>
-            <Typography>We believe in:</Typography>
+            <Typography fontWeight={"bold"} fontFamily={"Lato"} variant="h4">
+              We believe in:
+            </Typography>
             <List>
               <ListItemText>
-                - Dressing for the job you *want*, even if it's slightly illegal
+                <p className="mb-text ">
+                  - Dressing for the job you *want*, even if it's slightly
+                  illegal
+                </p>
               </ListItemText>
               <ListItemText>
-                - Making financial fraud fashionable (but not feasible)
+                <p className="mb-text ">
+                  - Making financial fraud fashionable (but not feasible)
+                </p>
               </ListItemText>
               <ListItemText>
-                - Turning heads in the boardroom and the courtroom with Embezzle
-                Ensemble,
+                <p className="mb-text ">
+                  - Turning heads in the boardroom and the courtroom with
+                  Embezzle Ensemble,
+                </p>
               </ListItemText>
             </List>
-            <Typography variant="h5">
+            <Typography fontWeight={"bold"} fontFamily={"Lato"} variant="h4">
               we believe in dressing for success... even if that success is
               slightly questionable. Swindle in style. (Metaphorically, of
               course.)
             </Typography>
           </Box>
+        </Box>
+        <Box>
+          <Typography
+            fontFamily={"Permanent Marker"}
+            align="center"
+            variant="h1"
+          >
+            Products
+          </Typography>
+          <Grid2 wrap="wrap"  columns={3} container>
+            {data.map((product: Product) => (
+              <ProductDisplay key={product.id} product={product} />
+            ))}
+          </Grid2>
         </Box>
       </Box>
     </section>
