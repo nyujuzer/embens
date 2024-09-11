@@ -5,7 +5,7 @@ import { Box, Grid2, Typography, ListItemText, List } from "@mui/material";
 import NavBar from "./components/navbar/navbar";
 import ProductDisplay from "./components/displayCase/display";
 import { Product } from "./types";
-import products from "./products.json";
+//import products from "./products.json";
 
 function App() {
   console.log(products);
