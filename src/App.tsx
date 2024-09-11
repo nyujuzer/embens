@@ -8,7 +8,7 @@ import { Product } from "./types";
 //import products from "./products.json";
 
 function App() {
-  console.log(products);
+  
   const API_KEY = process.env.REACT_APP_PRINTIFY_API_KEY;
   const SHOP_ID = process.env.REACT_APP_SHOP_ID;
   const [data, setData] = useState<Array<Product>>(
