@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Button, Grid2, Card, CardMedia, CardContent, CardActions } from '@mui/material';
+import { Typography, Button, Grid2, Card, CardMedia, CardContent, CardActions } from '@mui/material';
 import { Product } from '../../types';
 
 interface ProductDisplayProps {

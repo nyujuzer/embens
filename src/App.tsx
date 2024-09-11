@@ -17,14 +17,14 @@ function App() {
 
   useEffect(() => {
     const getProducts = async () => {
-      // const response = await fetch(`https://api.printify.com/v1/shops/${SHOP_ID}/products.json`, {
-      //   method: 'GET',
-      //   headers: {
-      //     'Authorization': `Bearer ${API_KEY}`,
-      //   },
-      // })
-      // const products = await response.json();
-      // setData(products.data[0])
+      const response = await fetch(`https://api.printify.com/v1/shops/${SHOP_ID}/products.json`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+        },
+      })
+      const products = await response.json();
+      setData(products.data[0])
     };
     getProducts();
   });
