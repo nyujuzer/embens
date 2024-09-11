@@ -12,7 +12,7 @@ function App() {
   const API_KEY = process.env.REACT_APP_PRINTIFY_API_KEY;
   const SHOP_ID = process.env.REACT_APP_SHOP_ID;
   const [data, setData] = useState<Array<Product>>(
-    products.data as Array<Product>
+    [{}] as Array<Product>
   );
 
   useEffect(() => {
