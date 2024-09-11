@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     const getProducts = async () => {
-<<<<<<< HEAD
       const response = await fetch(`https://api.printify.com/v1/shops/${SHOP_ID}/products.json`, {
         method: 'GET',
         headers: {
@@ -26,17 +25,7 @@ function App() {
       })
       const products = await response.json();
       setData(products.data[0])
-=======
-       const response = await fetch(`https://api.printify.com/v1/shops/${SHOP_ID}/products.json`, {
-         method: 'GET',
-         headers: {
-           'Authorization': `Bearer ${API_KEY}`,
-         },
-       })
-       const products = await response.json();
-       setData(products.data)
->>>>>>> 4d369c9835402e6bb5e40bfd04567d5972caeb9b
-    };
+      };
     getProducts();
   });
   return (
